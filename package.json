@@ -1,0 +1,8 @@
+{
+  "name": "awesome-hooks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/GitHubGanKai/awesome-hooks.git",
+  "author": "gankai <gangkai666@gmail.com>",
+  "license": "MIT"
+}
