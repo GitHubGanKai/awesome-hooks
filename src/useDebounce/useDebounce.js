@@ -4,10 +4,10 @@
  * @Author: GitHubGanKai
  * @Date: 2021-01-23 21:50:19
  * @LastEditors: gankai
- * @LastEditTime: 2021-01-23 22:10:31
+ * @LastEditTime: 2021-01-24 10:50:00
  * @FilePath: /awesome-hooks/src/useDebounce.js
  */
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = useState(value);

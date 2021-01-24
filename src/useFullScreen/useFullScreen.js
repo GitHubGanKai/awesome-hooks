@@ -4,11 +4,11 @@
  * @Author: GitHubGanKai
  * @Date: 2021-01-23 21:54:22
  * @LastEditors: gankai
- * @LastEditTime: 2021-01-23 22:10:18
- * @FilePath: /awesome-hooks/src/useFullScreen.js
+ * @LastEditTime: 2021-01-24 12:25:02
+ * @FilePath: /awesome-hooks/src/useFullScreen/useFullScreen.js
  */
 
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const useFullScreen = () => {
   const [isFS, setIsFS] = useState(false);
@@ -23,8 +23,6 @@ const useFullScreen = () => {
       el.webkitRequestFullscreen && el.webkitRequestFullscreen();
       el.msRequestFullscreen && el.msRequestFullscreen();
     }
-
-    setIsFS(true);
   };
 
   const exitFS = () => {
@@ -37,9 +35,17 @@ const useFullScreen = () => {
       document.webkitExitFullscreen && document.webkitExitFullscreen();
       document.msExitFullscreen && document.msExitFullscreen();
     }
-
-    setIsFS(false);
   };
+
+  useEffect(() => {
+    const eventHandler = () => {
+      setIsFS((val) => !val);
+    };
+    document.addEventListener("fullscreenchange", eventHandler);
+    return () => {
+      document.removeEventListener("fullscreenchange", eventHandler);
+    };
+  }, [setIsFS])
 
   return { elementFS, triggerFS, exitFS, isFS };
 };
